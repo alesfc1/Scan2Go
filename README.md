@@ -1,8 +1,8 @@
 # Scan2Go
 
 ## Plan dela
-- Spremeni logo
-- Spremeni ime
+- Spremeni logo 
+- Spremeni ime ✅
 - Uredi monetizacijo
 - Dodaj bannerje
 - Dodaj možnost ogleda video oglasa za brezplačen prenos pdf-a brez watermarka
