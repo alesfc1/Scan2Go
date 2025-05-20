@@ -133,11 +133,11 @@ class MainActivity : ComponentActivity() {
                                 Spacer(modifier = Modifier.width(16.dp))
                                 Column(modifier = Modifier.weight(1f)) {
                                     FeatureCard(
-                                        icon = R.drawable.image, title = "Img to PDF"
+                                        icon = R.drawable.text, title = "IMG to TXT"
                                     ) {
                                         Toast.makeText(
                                             this@MainActivity,
-                                            "Img to PDF is not available yet",
+                                            "IMG to TXT is not available yet",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }

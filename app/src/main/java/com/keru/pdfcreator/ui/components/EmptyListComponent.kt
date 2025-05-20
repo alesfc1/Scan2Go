@@ -22,8 +22,7 @@ fun EmptyListComponent() {
     Column(
         modifier = Modifier
             .padding(16.dp)
-            .fillMaxWidth()
-            .padding(vertical = 72.dp),
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -33,7 +32,7 @@ fun EmptyListComponent() {
             modifier = Modifier.size(72.dp)
         )
         Text(
-            text = "Uh, oh! 😓 \nThis list is empty",
+            text = "Start by scanning your first document",
             color = Color.Gray,
             fontSize = 14.sp,
             textAlign = TextAlign.Center

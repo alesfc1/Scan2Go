@@ -7,7 +7,7 @@
 - Dodaj bannerje
 - Dodaj možnost ogleda video oglasa za brezplačen prenos pdf-a brez watermarka
 - Dodaj watermark, če ne pogleda videa
-- Namesto IMG to pdf -> extract text
+- Namesto IMG to pdf -> IMG to TXT ✅
 - Extract text funkcionalnost
 - Compress funkcionalnost
 - Testiranje
