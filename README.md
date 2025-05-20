@@ -1,7 +1,7 @@
 # Scan2Go
 
 ## Plan dela
-- Spremeni logo 
+- Spremeni logo ✅
 - Spremeni ime ✅
 - Uredi monetizacijo
 - Dodaj bannerje
