@@ -94,6 +94,9 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     //noinspection UseTomlInstead
     androidTestImplementation("androidx.room:room-testing:$roomVersion")
+
+    // AdMob
+    implementation("com.google.android.gms:play-services-ads:22.6.0")
 }
 
 // Allow references to generated code
