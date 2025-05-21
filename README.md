@@ -3,8 +3,8 @@
 ## Plan dela
 - Spremeni logo ✅
 - Spremeni ime ✅
-- Uredi monetizacijo
-- Dodaj bannerje
+- Uredi monetizacijo ✅
+- Dodaj bannerje ✅
 - Dodaj možnost ogleda video oglasa za brezplačen prenos pdf-a brez watermarka
 - Dodaj watermark, če ne pogleda videa
 - Namesto IMG to pdf -> IMG to TXT ✅

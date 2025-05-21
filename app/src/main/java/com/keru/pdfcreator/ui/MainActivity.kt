@@ -104,7 +104,14 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .padding(16.dp)
                         ) {
-                            Spacer(modifier = Modifier.height(32.dp))
+                            // AdMob Banner Ad
+                            AdMobBanner(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 16.dp),
+                                //adUnitId = "ca-app-pub-5823130157974914/5402620431" za produkcijo
+                            )
+
                             Text(
                                 text = "Welcome,",
                                 style = MaterialTheme.typography.headlineMedium,
