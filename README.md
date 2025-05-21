@@ -8,6 +8,8 @@
 - Dodaj možnost ogleda video oglasa za brezplačen prenos pdf-a brez watermarka
 - Dodaj watermark, če ne pogleda videa
 - Namesto IMG to pdf -> IMG to TXT ✅
+- Rename pdf funkcionalnost 
+- Download funkcionalnost ✅
 - Extract text funkcionalnost
 - Compress funkcionalnost
 - Testiranje

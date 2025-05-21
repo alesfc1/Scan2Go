@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowDownward
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Button
@@ -33,9 +34,9 @@ import com.keru.pdfcreator.data.Document
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CompletedDialog(
+fun DownloadOrShareSheet(
     document: Document,
-    onDownload: () -> Unit = {},
+    onDownload: () -> Unit,
     onShare: () -> Unit,
     onDismiss: () -> Unit = {}
 ) {
@@ -45,7 +46,6 @@ fun CompletedDialog(
         sheetState = sheetState,
         onDismissRequest = { onDismiss() }
     ) {
-
         Column(
             modifier = Modifier
                 .padding(16.dp)
@@ -53,63 +53,62 @@ fun CompletedDialog(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Icon(
-                painter = painterResource(id = R.drawable.completed),
-                contentDescription = "",
-                modifier = Modifier.size(72.dp),
-                tint = Color(0xFFEE6E6F)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Your PDF has been created successfully!",
+                text = "Download or Share:",
                 textAlign = TextAlign.Center,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.ExtraBold
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(16.dp))
-
+            
+            // Document name
             Text(
                 text = document.name,
                 textAlign = TextAlign.Center,
                 fontSize = 16.sp,
                 color = Color.Gray
             )
+            
+            Spacer(modifier = Modifier.height(8.dp))
 
-            Spacer(modifier = Modifier.height(24.dp))
-
+            // Download Button
             Button(
-                onClick = { onDownload() },
+                onClick = {
+                    onDownload()
+                    onDismiss()
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFEE6E6F)
                 )
-            ){
+            ) {
                 Text(text = "Download")
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 Icon(
                     imageVector = Icons.Outlined.Download, contentDescription = ""
                 )
             }
 
+            // Share Button
             Button(
-                onClick = { onShare() },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                onClick = {
+                    onShare()
+                    onDismiss()
+                },
+                modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF419EFC)
                 )
             ) {
                 Text(text = "Share")
-                Spacer(modifier = Modifier.width(16.dp))
-                Icon(imageVector = Icons.Outlined.Share, contentDescription = "")
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    imageVector = Icons.Outlined.Share,
+                    contentDescription = "Share PDF"
+                )
             }
 
-            ElevatedButton(onClick = { onDismiss() }, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Done", color = Color(0xFFEE6E6F))
-            }
             Spacer(modifier = Modifier.height(24.dp))
         }
     }

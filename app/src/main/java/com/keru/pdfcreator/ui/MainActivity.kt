@@ -56,7 +56,8 @@ import com.keru.pdfcreator.ui.components.EmptyListComponent
 import com.keru.pdfcreator.ui.components.FeatureCard
 import com.keru.pdfcreator.ui.theme.PDFCreatorTheme
 import com.keru.pdfcreator.utils.formatDate
-import com.keru.pdfcreator.utils.openPdfFile
+import com.keru.pdfcreator.utils.sharePdfFile
+import com.keru.pdfcreator.utils.savePdfToDownloads
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -153,7 +154,7 @@ class MainActivity : ComponentActivity() {
                                     FeatureCard(icon = R.drawable.compress, title = "Compress") {
                                         Toast.makeText(
                                             this@MainActivity,
-                                            "Compress feature is not available yet",
+                                            "Compress is not available yet",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
@@ -202,17 +203,29 @@ class MainActivity : ComponentActivity() {
                     }
 
 
-                    pdfUri?.let {
+                    pdfUri?.let { uri ->
                         if (uiState.documents.isNotEmpty()) {
                             AnimatedVisibility(
-                                visible = it.path == uiState.documents.first().fileUri.toUri().path,
+                                visible = uri.path == uiState.documents.first().fileUri.toUri().path,
                                 enter = slideInVertically { it },
                                 exit = slideOutVertically { it }
                             ) {
+                                val document = uiState.documents.first()
                                 CompletedDialog(
-                                    document = uiState.documents.first(),
+                                    document = document,
                                     onShare = {
-                                        context.openPdfFile(it)
+                                        context.sharePdfFile(uri)
+                                    },
+                                    onDownload = {
+                                        val fileName = document.name
+                                        val success = context.savePdfToDownloads(uri, fileName)
+                                        if (!success) {
+                                            Toast.makeText(
+                                                context,
+                                                "Failed to save PDF. Please check storage permissions.",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
                                     },
                                     onDismiss = {
                                         pdfUri = null
@@ -237,7 +250,7 @@ class MainActivity : ComponentActivity() {
             pageCount = pdf.pageCount
 
             val document = Document(
-                name = "Document ${
+                name = "Scan2Go_PDF-${
                     currentTime.formatDate().replace(" ", "_").replace(",", "_")
                 }_${currentTime.toString().takeLast(4)}",
                 fileUri = pdfUri.toString(),
