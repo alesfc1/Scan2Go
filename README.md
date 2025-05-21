@@ -5,8 +5,7 @@
 - Spremeni ime ✅
 - Uredi monetizacijo ✅
 - Dodaj bannerje ✅
-- Dodaj možnost ogleda video oglasa za brezplačen prenos pdf-a brez watermarka
-- Dodaj watermark, če ne pogleda videa
+- Dodaj video oglas po kliku na download
 - Namesto IMG to pdf -> IMG to TXT ✅
 - Rename pdf funkcionalnost 
 - Download funkcionalnost ✅
