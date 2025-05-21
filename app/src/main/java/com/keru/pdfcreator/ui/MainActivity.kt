@@ -48,6 +48,7 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 import com.keru.pdfcreator.R
 import com.keru.pdfcreator.data.Document
+import com.keru.pdfcreator.ui.components.AdMobBanner
 import com.keru.pdfcreator.ui.components.CompletedDialog
 import com.keru.pdfcreator.ui.components.CreateNewPdfCard
 import com.keru.pdfcreator.ui.components.DocumentCard
@@ -176,6 +177,20 @@ class MainActivity : ComponentActivity() {
                             ) {
                                 EmptyListComponent()
                             }
+
+                            // AdMob Banner Ad
+                            AdMobBanner(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 16.dp),
+                                //adUnitId = "ca-app-pub-5823130157974914/5857072111" za produkcijo
+                            )
+                            AdMobBanner(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 16.dp),
+                                //adUnitId = "ca-app-pub-5823130157974914/3793175231" za produkcijo
+                            )
                         }
                     }
 

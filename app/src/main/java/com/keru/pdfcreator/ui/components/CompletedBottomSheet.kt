@@ -89,6 +89,7 @@ fun CompletedDialog(
             ElevatedButton(onClick = { onDismiss() }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "Done", color = Color(0xFFEE6E6F))
             }
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
 }

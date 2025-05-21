@@ -37,20 +37,5 @@ fun EmptyListComponent() {
             fontSize = 14.sp,
             textAlign = TextAlign.Center
         )
-
-    // AdMob Banner Ad
-    AdMobBanner(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 16.dp),
-        //adUnitId = "ca-app-pub-5823130157974914/5857072111" za produkcijo
-    )
-
-        AdMobBanner(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            //adUnitId = "ca-app-pub-5823130157974914/3793175231" za produkcijo
-        )
     }
 }
