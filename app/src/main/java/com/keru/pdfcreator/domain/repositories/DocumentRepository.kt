@@ -8,4 +8,6 @@ interface DocumentRepository {
     suspend fun getAllDocuments(): Flow<List<Document>>
 
     suspend fun insert(document: Document)
+
+    suspend fun update(document: Document)
 }

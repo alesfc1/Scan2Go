@@ -110,7 +110,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(bottom = 16.dp),
-                                //adUnitId = "ca-app-pub-5823130157974914/5402620431" za produkcijo
+                                adUnitId = "ca-app-pub-5823130157974914/5402620431" //produkcija
                             )
 
                             Text(
@@ -173,7 +173,12 @@ class MainActivity : ComponentActivity() {
                                     modifier = Modifier.padding(vertical = 16.dp)
                                 ) {
                                     uiState.documents.forEach { document ->
-                                        DocumentCard(document = document)
+                                        DocumentCard(document = document,
+                                            onRename = { newName ->
+                                                val updatedDoc = document.copy(name = newName)
+                                                vm.updateDocument(updatedDoc)
+                                            }
+                                        )
                                     }
                                 }
                             }
@@ -191,13 +196,13 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(bottom = 16.dp),
-                                //adUnitId = "ca-app-pub-5823130157974914/5857072111" za produkcijo
+                                adUnitId = "ca-app-pub-5823130157974914/5857072111" //produkcija
                             )
                             AdMobBanner(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(bottom = 16.dp),
-                                //adUnitId = "ca-app-pub-5823130157974914/3793175231" za produkcijo
+                                adUnitId = "ca-app-pub-5823130157974914/3793175231" //produkcija
                             )
                         }
                     }
@@ -226,6 +231,10 @@ class MainActivity : ComponentActivity() {
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         }
+                                    },
+                                    onRename = { newName ->
+                                        val updatedDoc = document.copy(name = newName)
+                                        vm.updateDocument(updatedDoc)
                                     },
                                     onDismiss = {
                                         pdfUri = null

@@ -17,4 +17,8 @@ class DocumentRepositoryImpl @Inject constructor(
     override suspend fun insert(document: Document) {
         documentInfoDao.insert(document)
     }
+
+    override suspend fun update(document: Document) {
+        documentInfoDao.update(document)
+    }
 }

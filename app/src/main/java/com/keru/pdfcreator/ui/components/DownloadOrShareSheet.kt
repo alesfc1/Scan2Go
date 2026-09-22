@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowDownward
 import androidx.compose.material.icons.outlined.Download
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -21,6 +22,10 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,8 +43,20 @@ fun DownloadOrShareSheet(
     document: Document,
     onDownload: () -> Unit,
     onShare: () -> Unit,
+    onRename: (String) -> Unit,
     onDismiss: () -> Unit = {}
 ) {
+    var showRenameDialog by remember { mutableStateOf(false) }
+
+    // Show rename dialog if needed
+    if (showRenameDialog) {
+        RenameDialog(
+            currentName = document.name,
+            onDismiss = { showRenameDialog = false },
+            onConfirm = { newName -> onRename(newName) }
+        )
+    }
+
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     ModalBottomSheet(
@@ -69,7 +86,21 @@ fun DownloadOrShareSheet(
                 fontSize = 16.sp,
                 color = Color.Gray
             )
-            
+
+            // Rename Button
+            ElevatedButton(
+                onClick = { showRenameDialog = true },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Rename", color = Color(0xFF000000))
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    imageVector = Icons.Outlined.Edit,
+                    contentDescription = "Rename",
+                    tint = Color(0xFF000000)
+                )
+            }
+
             Spacer(modifier = Modifier.height(8.dp))
 
             // Download Button

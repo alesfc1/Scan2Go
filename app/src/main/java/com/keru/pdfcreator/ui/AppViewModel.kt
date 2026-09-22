@@ -38,6 +38,12 @@ class AppViewModel @Inject constructor(
         }
     }
 
+    fun updateDocument(document: Document) {
+        viewModelScope.launch {
+            documentRepository.update(document)
+        }
+    }
+
 }
 
 data class AppUiState(

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Document(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val name: String,
+    var name: String,
     val fileUri: String,
     val createdAt: Long,
     val pageCount: Int,

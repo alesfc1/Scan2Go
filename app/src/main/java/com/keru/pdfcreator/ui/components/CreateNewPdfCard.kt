@@ -56,7 +56,7 @@ fun CreateNewPdfCard(modifier: Modifier = Modifier, onClick: () -> Unit) {
                 onClick()
             }) {
                 Text(
-                    text = "CREATE NEW PDF", color = Color.White, maxLines = 1
+                    text = "SCAN HERE", color = Color.White, maxLines = 1
                 )
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowRightAlt,

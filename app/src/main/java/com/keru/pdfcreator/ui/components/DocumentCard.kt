@@ -65,7 +65,8 @@ private fun defaultShareHandler(): (Uri) -> Unit {
 fun DocumentCard(
     document: Document,
     onDownload: (Uri) -> Unit = defaultDownloadHandler(document),
-    onShare: (Uri) -> Unit = defaultShareHandler()
+    onShare: (Uri) -> Unit = defaultShareHandler(),
+    onRename: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     var showBottomSheet by remember { mutableStateOf(false) }
@@ -76,6 +77,10 @@ fun DocumentCard(
             document = document,
             onDownload = { onDownload(document.fileUri.toUri()) },
             onShare = { onShare(document.fileUri.toUri()) },
+            onRename = { newName ->
+                onRename(newName)
+                showBottomSheet = false
+            },
             onDismiss = { showBottomSheet = false }
         )
     }

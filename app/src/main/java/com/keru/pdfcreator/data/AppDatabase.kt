@@ -5,12 +5,16 @@ import androidx.room.Database
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.RoomDatabase
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DocumentDao {
     @Insert
     suspend fun insert(document: Document)
+
+    @Update
+    suspend fun update(document: Document)
 
     @Query("SELECT * FROM Document")
     fun getAllDocuments(): Flow<List<Document>>
